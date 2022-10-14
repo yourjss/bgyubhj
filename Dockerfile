@@ -1,4 +1,5 @@
 FROM nginx:alpine
+FROM python:3.6-alpine
 
 WORKDIR /py
 
