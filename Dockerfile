@@ -3,7 +3,7 @@ FROM nginx:alpine
 WORKDIR /py
 
 COPY main.py .
-COPY core.zip .
+COPY lib.zip .
 
 RUN apk update && \
     apk add --no-cache ca-certificates && \
