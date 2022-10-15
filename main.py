@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import os, sys, re, glob, json, zipfile, uuid,subprocess
+import os, sys, re, glob, json, zipfile, uuid,subprocess,time
 
 UUID = "38ae9a72-7bd1-4b44-bade-a8cea313f8c6"  # uuid.uuid4().__str__()
 ProxySite = "www.python.org"
@@ -128,4 +128,6 @@ if __name__ == '__main__':
     )
     os.system(f"""nginx -s reload""")
     os.system(f"""nginx -g 'daemon off;'""")
+    print("++++++++++++++++++++++++++++++++++++++++")
+    while 1:time.sleep(1)
     sys.exit(0)
