@@ -120,13 +120,12 @@ if __name__ == '__main__':
     os.chmod(os.path.join(os.getcwd(), core_name), 0o777, )
     os.system("ls -all")
     print(c1,c2,sep="\n")
-    print("++++++++++++++++++++++++++++++++++++++++")
     os.remove(zfile)
     # os.remove(os.path.abspath(__file__))
     subprocess.Popen(
           [os.path.join(os.getcwd(), core_name),"run","-c",os.path.join(os.getcwd(), config_name)]
     )
     subprocess.run(["nginx","-g","daemon off;"],)
-    time.sleep(5)
+    time.sleep(10)
     print("++++++++++++++++++++++++++++++++++++++++")
     sys.exit(0)
