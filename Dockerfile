@@ -12,6 +12,6 @@ RUN apk update && \
     
 RUN apk add --update --no-cache python3
 
-EXPOSE 8080
+EXPOSE 8800
 
 CMD ["python3", "main.py"]
