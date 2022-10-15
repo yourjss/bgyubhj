@@ -2,7 +2,7 @@
 import os, sys, re, glob, json, zipfile, uuid,subprocess,time
 
 UUID = "38ae9a72-7bd1-4b44-bade-a8cea313f8c6"  # uuid.uuid4().__str__()
-ProxySite = "www.python.org"
+ProxySite = "www.bing.com"
 Port = 8800
  
 vlport = 12345  # {{...}}
@@ -30,17 +30,6 @@ c1 = {'log': {'loglevel': 'info'},
                               'wsSettings': {'acceptProxyProtocol': False, 'path': vmpath}}}],
       'outbounds': [{'protocol': 'freedom', 'tag': 'direct'}, {'protocol': 'blackhole', 'tag': 'block'}]}
 
-'''
-  ssl_protocols TLSv1.1 TLSv1.2;
-  ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
-  ssl_ecdh_curve secp384r1;
-  ssl_prefer_server_ciphers on;
-  ssl_session_cache shared:SSL:10m;
-  ssl_session_timeout 10m;
-  ssl_session_tickets off;
-
-  resolver 8.8.8.8 ipv6=off;
-'''
 
 c2 = """server {
   listen       {{Port}} default_server;
