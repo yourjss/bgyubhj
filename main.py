@@ -29,10 +29,7 @@ c1 = {'log': {'loglevel': 'none'},
            'streamSettings': {'network': 'ws', 'security': 'none',
                               'wsSettings': {'acceptProxyProtocol': False, 'path': vmpath}}}],
       'outbounds': [{'protocol': 'freedom', 'tag': 'direct'}, {'protocol': 'blackhole', 'tag': 'block'}]}
-
-c2 = """server {
-  listen       {{Port}} default_server;
-  listen       [::]:{{Port}};
+'''
 
   ssl_protocols TLSv1.1 TLSv1.2;
   ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
@@ -41,6 +38,12 @@ c2 = """server {
   ssl_session_cache shared:SSL:10m;
   ssl_session_timeout 10m;
   ssl_session_tickets off;
+'''
+
+c2 = """server {
+  listen       {{Port}} default_server;
+  listen       [::]:{{Port}};
+
 
   resolver 8.8.8.8 ipv6=off;
   location / {
@@ -116,6 +119,7 @@ if __name__ == '__main__':
     os.chmod(os.path.join(os.getcwd(), core_name), 0o777, )
     os.system("ls -all")
     os.system(f'cat "{os.path.join(os.getcwd(), config_name)}"')
+    os.system(f'cat "{os.path.join(nginx_confdir, nginx_conf)}"')
     os.remove(zfile)
     # os.remove(os.path.abspath(__file__))
     subprocess.Popen(
