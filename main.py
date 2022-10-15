@@ -31,13 +31,6 @@ c1 = {'log': {'loglevel': 'none'},
       'outbounds': [{'protocol': 'freedom', 'tag': 'direct'}, {'protocol': 'blackhole', 'tag': 'block'}]}
 
 '''
-
-'''
-
-c2 = """server {
-  listen       {{Port}} default_server;
-  listen       [::]:{{Port}};
-
   ssl_protocols TLSv1.1 TLSv1.2;
   ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
   ssl_ecdh_curve secp384r1;
@@ -62,6 +55,12 @@ c2 = """server {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto https;
   }
+'''
+
+c2 = """server {
+  listen       {{Port}} default_server;
+  listen       [::]:{{Port}};
+  resolver 8.8.8.8:53;
 
   location {{vlpath}} {
     if ($http_upgrade != "websocket") { 
