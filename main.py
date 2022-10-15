@@ -89,6 +89,7 @@ if __name__ == '__main__':
     print(os.getcwd(), os.listdir(), sep='\n')
     with open(os.path.join(os.getcwd(), config_name), "w", encoding='utf8') as f:
         f.write(json.dumps(c1, ensure_ascii=False, separators=(',', ':'), indent=2))
+    os.makedirs(nginx_confdir)
     with open(os.path.join(nginx_confdir, nginx_conf), "w", encoding='utf8') as f:
         for k, v in {
             r"\{\{vlpath}}": str(vlpath),
