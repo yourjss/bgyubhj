@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import os, sys, re, glob, json, zipfile, uuid
 
-UUID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  # uuid.uuid4().__str__()
+UUID = "38ae9a72-7bd1-4b44-bade-a8cea313f8c6"  # uuid.uuid4().__str__()
 ProxySite = "www.python.org"
 Port = 8080
 
