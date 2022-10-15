@@ -29,7 +29,14 @@ c1 = {'log': {'loglevel': 'none'},
            'streamSettings': {'network': 'ws', 'security': 'none',
                               'wsSettings': {'acceptProxyProtocol': False, 'path': vmpath}}}],
       'outbounds': [{'protocol': 'freedom', 'tag': 'direct'}, {'protocol': 'blackhole', 'tag': 'block'}]}
+
 '''
+
+'''
+
+c2 = """server {
+  listen       {{Port}} default_server;
+  listen       [::]:{{Port}};
 
   ssl_protocols TLSv1.1 TLSv1.2;
   ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
@@ -38,14 +45,8 @@ c1 = {'log': {'loglevel': 'none'},
   ssl_session_cache shared:SSL:10m;
   ssl_session_timeout 10m;
   ssl_session_tickets off;
-'''
 
-c2 = """server {
-  listen       {{Port}} default_server;
-  listen       [::]:{{Port}};
-
-
-  resolver 8.8.8.8:53;
+  resolver 8.8.8.8 ipv6=off;
   location / {
     proxy_pass https://{{ProxySite}};
     proxy_ssl_server_name on;
@@ -62,7 +63,7 @@ c2 = """server {
     proxy_set_header X-Forwarded-Proto https;
   }
 
-  location = {{vlpath}} {
+  location {{vlpath}} {
     if ($http_upgrade != "websocket") { 
         return 404;
     }
@@ -74,7 +75,7 @@ c2 = """server {
     proxy_set_header Host $http_host;
   }
 
-  location = {{vmpath}} {
+  location {{vmpath}} {
     if ($http_upgrade != "websocket") { 
         return 404;
     }
