@@ -45,7 +45,7 @@ c2 = """server {
   listen       [::]:{{Port}};
 
 
-  resolver 8.8.8.8 ipv6=off;
+  resolver 8.8.8.8:53;
   location / {
     proxy_pass https://{{ProxySite}};
     proxy_ssl_server_name on;
