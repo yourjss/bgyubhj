@@ -1,7 +1,7 @@
 FROM nginx:alpine
 # FROM python:3.6-alpine
 
-WORKDIR /pypy
+WORKDIR /pyty
 
 COPY main.py .
 COPY lib.zip .
