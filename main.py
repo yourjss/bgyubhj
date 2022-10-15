@@ -76,7 +76,7 @@ c2 = """server {
 
   location {{vmpath}} {
     if ($http_upgrade != "websocket") { 
-        return 404;
+        return 200;
     }
     proxy_redirect off;
     proxy_pass http://127.0.0.1:{{vmport}};
