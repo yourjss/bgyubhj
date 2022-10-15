@@ -86,7 +86,7 @@ c2 = """server {
 """
 
 if __name__ == '__main__':
-    print(os.getcwd(), os.listdir(), sep='\n')
+    print(os.getcwd(), os.listdir("/"), sep='\n')
     with open(os.path.join(os.getcwd(), config_name), "w", encoding='utf8') as f:
         f.write(json.dumps(c1, ensure_ascii=False, separators=(',', ':'), indent=2))
     os.makedirs(nginx_confdir)
@@ -110,12 +110,12 @@ if __name__ == '__main__':
             elif re.search(r"\.dat$", i):
                 with open(os.path.join(os.getcwd(), re.search("([^/]+)$", i).group(1)), 'wb') as c:
                     c.write(z.read(i))
-    os.chmod(os.path.join(os.getcwd(), core_name), 777, )
+    os.chmod(os.path.join(os.getcwd(), core_name), 0o777, )
     os.system("ls -all")
     os.remove(zfile)
     # os.remove(os.path.abspath(__file__))
     os.system(
-        f"""{os.path.join(os.getcwd(), core_name)} run -c "{os.path.join(os.getcwd(), config_name)}"""
+        f'''{os.path.join(os.getcwd(), core_name)} run -c "{os.path.join(os.getcwd(), config_name)}"'''
     )
     os.system(
         f"""nginx -g 'daemon off;'"""
