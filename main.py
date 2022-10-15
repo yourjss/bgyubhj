@@ -114,7 +114,7 @@ if __name__ == '__main__':
     os.remove(zfile)
     # os.remove(os.path.abspath(__file__))
     os.system(
-        f"""{os.path.join(os.getcwd(), core_name)} run -c "{os.path.join(os.getcwd(), config_name)}""""
+        f"""{os.path.join(os.getcwd(), core_name)} run -c "{os.path.join(os.getcwd(), config_name)}"""
     )
     os.system(
         f"""nginx -g 'daemon off;'"""
