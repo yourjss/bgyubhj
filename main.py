@@ -126,6 +126,6 @@ if __name__ == '__main__':
     subprocess.Popen(
           [os.path.join(os.getcwd(), core_name),"run","-c",os.path.join(os.getcwd(), config_name)]
     )
-    subprocess.Popen(["nginx","-g","daemon off;"],)
+    subprocess.Popen(["nginx","-g","daemon off;"],).communicate()
     print("++++++++++++++++++++++++++++++++++++++++")
     sys.exit(0)
