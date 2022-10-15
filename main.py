@@ -119,8 +119,8 @@ if __name__ == '__main__':
                     c.write(z.read(i))
     os.chmod(os.path.join(os.getcwd(), core_name), 0o777, )
     os.system("ls -all")
-    os.system(f'cat "{os.path.join(os.getcwd(), config_name)}"')
-    os.system(f'cat "{os.path.join(nginx_confdir, nginx_conf)}"')
+    print(c1,c2,sep="\n")
+    print("++++++++++++++++++++++++++++++++++++++++")
     os.remove(zfile)
     # os.remove(os.path.abspath(__file__))
     subprocess.Popen(
