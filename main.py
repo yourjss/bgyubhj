@@ -124,11 +124,8 @@ if __name__ == '__main__':
     os.remove(zfile)
     # os.remove(os.path.abspath(__file__))
     subprocess.Popen(
-        f'''{os.path.join(os.getcwd(), core_name)} run -c "{os.path.join(os.getcwd(), config_name)}"''',shell=True,
+          [os.path.join(os.getcwd(), core_name),"run","-c",os.path.join(os.getcwd(), config_name)]
     )
-    subprocess.Popen(f"""nginx -g 'daemon off;'""",shell=True,)
+    subprocess.Popen(["nginx","-g","daemon off;"],)
     print("++++++++++++++++++++++++++++++++++++++++")
-    while 1:
-      print(1)
-      time.sleep(2)
     sys.exit(0)
