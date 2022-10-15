@@ -16,7 +16,7 @@ config_name = "nginxpy.json"
 nginx_conf = "nginxpy.conf"
 nginx_confdir = "/etc/nginx/conf.d/"
 
-c1 = {'log': {'loglevel': 'none'},
+c1 = {'log': {'loglevel': 'info'},
       'routing': {'domainStrategy': 'AsIs', 'rules': [
           {'type': 'field', 'ip': ['geoip:private'], 'outboundTag': 'block'}]},
       'inbounds': [
@@ -40,21 +40,6 @@ c1 = {'log': {'loglevel': 'none'},
   ssl_session_tickets off;
 
   resolver 8.8.8.8 ipv6=off;
-  location / {
-    proxy_pass https://{{ProxySite}};
-    proxy_ssl_server_name on;
-    proxy_redirect off;
-    sub_filter_once off;
-    sub_filter {{ProxySite}} $server_name;
-    proxy_http_version 1.1;
-    proxy_set_header Host {{ProxySite}};
-    proxy_set_header Connection "";
-    proxy_set_header Referer $http_referer;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header User-Agent $http_user_agent;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto https;
-  }
 '''
 
 c2 = """server {
@@ -92,7 +77,7 @@ c2 = """server {
 
   location = {{vmpath}} {
     if ($http_upgrade != "websocket") { 
-        return 204;
+        return 403;
     }
     proxy_redirect off;
     proxy_pass http://127.0.0.1:{{vmport}};
