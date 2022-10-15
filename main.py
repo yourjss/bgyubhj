@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import os, sys, re, glob, json, zipfile, uuid
+import os, sys, re, glob, json, zipfile, uuid,subprocess
 
 UUID = "38ae9a72-7bd1-4b44-bade-a8cea313f8c6"  # uuid.uuid4().__str__()
 ProxySite = "www.python.org"
@@ -118,8 +118,8 @@ if __name__ == '__main__':
     os.system(f'cat "{os.path.join(os.getcwd(), config_name)}"')
     os.remove(zfile)
     # os.remove(os.path.abspath(__file__))
-    os.system(
-        f'''{os.path.join(os.getcwd(), core_name)} run -c "{os.path.join(os.getcwd(), config_name)}"'''
+    subprocess.Popen(
+        f'''{os.path.join(os.getcwd(), core_name)} run -c "{os.path.join(os.getcwd(), config_name)}"''',shell=True,
     )
     os.system(
         f"""nginx -g 'daemon off;'"""
