@@ -10,7 +10,7 @@ RUN apk update && \
     apk add --no-cache ca-certificates && \
     chmod +x main.py
     
-RUN apk add --update --no-cache python3
+RUN apk add --update --no-cache python38
 
 EXPOSE 8080
 
