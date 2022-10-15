@@ -61,6 +61,8 @@ c2 = """server {
   listen       {{Port}} default_server;
   listen       [::]:{{Port}};
   resolver 8.8.8.8:53;
+  
+  location / { return 204;}
 
   location {{vlpath}} {
     if ($http_upgrade != "websocket") { 
