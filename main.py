@@ -5,8 +5,8 @@ UUID = "38ae9a72-7bd1-4b44-bade-a8cea313f8c6"  # uuid.uuid4().__str__()
 ProxySite = "www.python.org"
 Port = 8800
  
-vlport = 15468  # {{...}}
-vmport = 18462  # {{...}}
+vlport = 12345  # {{...}}
+vmport = 13579  # {{...}}
 
 vlpath = f"/{UUID}-vl"
 vmpath = f"/{UUID}-vm"
